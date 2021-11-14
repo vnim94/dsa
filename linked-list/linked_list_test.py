@@ -65,6 +65,33 @@ class LinkedListTest(unittest.TestCase):
         self.assertEqual(linkedList.get(1),6)
         self.assertEqual(linkedList.get(2),5)
 
+    def test_set_updates_value_at_index(self):
+        linkedList = LinkedList()
+        linkedList.add(1)
+        linkedList.add(2)
+        
+        linkedList.set(1,5)
+
+        self.assertEqual(linkedList.get(1),5)
+
+    def test_push_inserts_value_at_head(self):
+        linkedList = LinkedList()
+        linkedList.add(1)
+        linkedList.add(2)
+
+        linkedList.push(5)
+
+        self.assertEqual(linkedList.get(0),5)
+
+    def test_pop_removes_value_at_end_of_list(self):
+        linkedList = LinkedList()
+        linkedList.add(1)
+        linkedList.add(2)
+
+        linkedList.pop()
+
+        self.assertEqual(linkedList.size(),1)
+
     def test_remove_value_at_index(self):
         linkedList = LinkedList()
         linkedList.add(1)
