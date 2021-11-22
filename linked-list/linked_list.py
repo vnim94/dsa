@@ -5,7 +5,8 @@ class Node:
 
 class LinkedList:
     def __init__(self):
-        self.head = Node(None)
+        self.head = None
+        self.tail = None
 
     # get -> return value at index
     def get(self, index):
@@ -14,14 +15,14 @@ class LinkedList:
         if index == 0:
             return self.head.data
 
-        value = self.head
+        node = self.head
 
         # loop through to specified index and set value as node
         for _ in range(index):
-            value = value.next
+            node = node.next
 
         # return data at the node
-        return value.data
+        return node.data
 
     # contains -> return true if value exists, else false
     def contains(self, value):
@@ -41,18 +42,18 @@ class LinkedList:
 
     # add -> add value at end of list
     def add(self, value):
-        
-        node = self.head
-
-        # go to last node
-        while node.next != None:
-            node = node.next
-
-        # if current node empty, insert value, else insert new node
-        if node.data == None:
-            node.data = value
+        # if empty, insert at head and set next as tail
+        if self.head == None:
+            self.head = Node(value)
+        elif self.head.next == None:
+            self.tail = Node(value)
+            self.head.next = self.tail
+        # else set as tail
         else:
-            node.next = Node(value)
+            newNode = Node(value)
+            self.tail.next = newNode
+            self.tail = newNode
+
 
     # insert -> add value at specified index 
     def insert(self, index, value):
