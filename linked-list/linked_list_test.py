@@ -18,9 +18,11 @@ class LinkedListTest(unittest.TestCase):
         linkedList = LinkedList()
         linkedList.add(1)
         linkedList.add(2)
+        linkedList.add(3)
         
         self.assertEqual(linkedList.head.data, 1)
-        self.assertEqual(linkedList.tail.data, 2)
+        self.assertEqual(linkedList.head.next.data, 2)
+        self.assertEqual(linkedList.tail.data, 3)
 
     def test_get(self):
         linkedList = LinkedList()
@@ -32,8 +34,9 @@ class LinkedListTest(unittest.TestCase):
         linkedList = LinkedList()
         linkedList.add(1)
         linkedList.add(2)
+        linkedList.add(3)
         
-        self.assertEqual(linkedList.get(1), 2)
+        self.assertEqual(linkedList.get(2), 3)
 
     def test_contains_data_at_head(self):
         linkedList = LinkedList()
@@ -101,6 +104,19 @@ class LinkedListTest(unittest.TestCase):
         linkedList.remove(1)
 
         self.assertEqual(linkedList.size(), 1)
+
+    def test_reverse(self):
+        linkedList = LinkedList()
+        linkedList.add(1)
+        linkedList.add(2)
+        linkedList.add(3)
+
+        linkedList.reverse()
+
+        self.assertEqual(linkedList.get(0),3)
+        self.assertEqual(linkedList.get(1),2)
+        self.assertEqual(linkedList.get(2),1)
+
 
     def test_size_returns_length_of_list(self):
         linkedList = LinkedList()

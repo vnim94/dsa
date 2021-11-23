@@ -129,6 +129,24 @@ class LinkedList:
         else:
             node.next = None
 
+    # reverse
+    def reverse(self):
+        
+        prev = None
+        current = self.head
+        next = self.head
+
+        # loop until last node
+        while current != None:
+            next = next.next
+            # reverse next pointer
+            current.next = prev
+            prev = current
+            current = next
+        
+        # set last node as head
+        self.head = prev
+
     # size -> returns length of list
     def size(self):
         node = self.head
