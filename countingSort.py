@@ -12,24 +12,20 @@ def countingSort(array):
 	# update values with cumulative sum
 	for i in range(len(count) - 1):
 		count[i+1] += count[i]
-	# shift values in count array to right
-	for i in range(len(count) - 1,0,-1):
-		count[i] = count[i-1]
 	
-	count[0] = 0
 	# create output array
 	output = [0] * len(array)
 
 	# loop through array
 	for i in range(len(array)):
-		# insert value into output array, index based on count array
-		output[count[array[i]]] = array[i]
+		# insert value into output array, index based on value - 1 at corresponding index in count array
+		output[count[array[i]] - 1] = array[i]
 		# increment value in count array by 1
-		count[array[i]] += 1
+		count[array[i]] -= 1
 		
 	return output
 
-array = [1,0,3,1,3,1]
+array = [5,7,5,2,1,1]
 
 print(countingSort(array))
 
