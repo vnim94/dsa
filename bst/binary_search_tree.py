@@ -18,6 +18,20 @@ class BinarySearchTree:
             else:
                 self.left.insert(value)
         
+    def remove(self, value):
+        if self.root == value:
+            self.root = None
+        elif value > self.root:
+            if self.right.root == value:
+                self.right = None
+            else:
+                self.right.remove(value)
+        else:
+            if self.left.root == value:
+                self.left = None
+            else:
+                self.left.remove(value)
+
     def search(self, value):
         if self.root == value:
             return True
@@ -31,3 +45,12 @@ class BinarySearchTree:
                 return self.left.search(value)
             else:
                 return False
+
+    def preOrderTraversal(self):
+        None
+
+    def inOrderTraversal(self):
+        None
+
+    def postOrderTraversal(self):
+        None
