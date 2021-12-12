@@ -112,15 +112,17 @@ class test_remove_method(unittest.TestCase):
         bst.remove(2)
         self.assertIsNone(bst.right)
 
-    @unittest.skip
-    def test_remove_values_in_right_sub_trees(self):
+    def test_remove_value_in_right_sub_trees(self):
         bst = BinarySearchTree()
         bst.insert(1)
         bst.insert(2)
         bst.insert(3)
+        bst.insert(4)
         
         bst.remove(2)
+
         self.assertEqual(bst.right.root, 3)
+        self.assertEqual(bst.right.right.root, 4)
 
     def test_remove_value_in_left_sub_tree(self):
         bst = BinarySearchTree()
@@ -130,6 +132,31 @@ class test_remove_method(unittest.TestCase):
         bst.remove(0)
 
         self.assertIsNone(bst.left)
+
+    def test_remove_values_in_left_sub_trees_in_order(self):
+        bst = BinarySearchTree()
+        bst.insert(2)
+        bst.insert(1)
+        bst.insert(0)
+
+        bst.remove(0)
+        self.assertIsNone(bst.left.left)
+
+        bst.remove(1)
+        self.assertIsNone(bst.left)
+
+    def test_remove_value_in_left_sub_trees(self):
+        bst = BinarySearchTree()
+        bst.insert(2)
+        bst.insert(1)
+        bst.insert(0)
+        bst.insert(-1)
+
+        bst.remove(1)
+
+        self.assertEqual(bst.left.root,0)
+        self.assertEqual(bst.left.left.root, -1)
+
 
 
 
