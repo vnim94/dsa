@@ -60,6 +60,19 @@ class test_insert_method(unittest.TestCase):
         self.assertEqual(bst.left.root, 1)
         self.assertEqual(bst.left.left.root,0)
 
+    def test_insert_keeps_bst_balanced(self):
+        bst = BinarySearchTree()
+        bst.insert(1)
+        bst.insert(0)
+        bst.insert(1)
+        bst.insert(2)
+        bst.insert(2)
+
+        self.assertEqual(bst.left.root, 0)
+        self.assertEqual(bst.left.right.root, 1)
+        self.assertEqual(bst.right.root, 2)
+        self.assertEqual(bst.right.left.root, 2)
+
 class test_search_method(unittest.TestCase):
 
     def test_search_for_value_at_root(self):
@@ -157,8 +170,70 @@ class test_remove_method(unittest.TestCase):
         self.assertEqual(bst.left.root,0)
         self.assertEqual(bst.left.left.root, -1)
 
+    def test_remove_value_in_left_and_right_sub_trees(self):
+        bst = BinarySearchTree()
+        bst.insert(1)
+        bst.insert(0)
+        bst.insert(2)
 
+        bst.remove(0)
+        self.assertIsNone(bst.left)
 
+        bst.remove(2)
+        self.assertIsNone(bst.right)
+
+    def test_remove_keeps_bst_balanced(self):
+        bst = BinarySearchTree()
+        bst.insert(1)
+        bst.insert(0)
+        bst.insert(-1)
+        bst.insert(1)
+        bst.insert(2)
+        bst.insert(3)
+        bst.insert(3)
+
+        bst.remove(0)
+        self.assertEqual(bst.left.root, 1)
+
+        bst.remove(3)
+        self.assertEqual(bst.right.right.root, 3)
+
+class test_min_method(unittest.TestCase):
+
+    def test_min_returns_root_in_bst_with_only_one_value(self):
+        bst = BinarySearchTree()
+        bst.insert(1)
+
+        self.assertEqual(bst.min(), 1)
+
+    
+    def test_min_returns_lowest_value_in_bst(self):
+        bst = BinarySearchTree()
+        bst.insert(1)
+        bst.insert(0)
+        bst.insert(-1)
+
+        self.assertEqual(bst.min(), -1)
+
+class test_max_method(unittest.TestCase):
+
+    def test_max_returns_largest_value_in_bst(self):
+        bst = BinarySearchTree()
+        bst.insert(1)
+        bst.insert(2)
+        bst.insert(3)
+
+        self.assertEqual(bst.max(), 3)
+
+class test_height_method(unittest.TestCase):
+
+    def test_height_returns_max_height_of_bst(self):
+        bst = BinarySearchTree()
+        bst.insert(1)
+        bst.insert(2)
+        bst.insert(3)
+
+        self.assertEqual(bst.height(), 2)
 
 @unittest.skip
 class test_to_string_method(unittest.TestCase):

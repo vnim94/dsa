@@ -58,6 +58,19 @@ class BinarySearchTree:
             else:
                 return False
 
+    def min(self):
+        if self.left == None:
+            return self.root
+        return self.left.min()
+
+    def max(self):
+        if self.right == None:
+            return self.root
+        return self.right.max()
+    
+    def height(self):
+        None
+
     def preOrderTraversal(self):
         None
 
