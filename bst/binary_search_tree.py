@@ -35,10 +35,10 @@ class BinarySearchTree:
         else:
             if self.left != None:
                 if self.left.root == value:
-                    if self.left.left != None:
-                        self.left = self.left.left
-                    elif self.left.right != None:
+                    if self.left.right != None:
                         self.left = self.left.right
+                    elif self.left.left != None:
+                        self.left = self.left.left
                     else:
                         self.left = None
                 else:
