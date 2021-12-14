@@ -227,6 +227,41 @@ class test_max_method(unittest.TestCase):
 
 class test_height_method(unittest.TestCase):
 
+    def test_height_returns_0_for_tree_with_root_only(self):
+        bst = BinarySearchTree()
+        bst.insert(1)
+
+        self.assertEqual(bst.height(), 0)
+
+    def test_height_returns_1_for_tree_with_one_left_sub_tree_only(self):
+        bst = BinarySearchTree()
+        bst.insert(1)
+        bst.insert(0)
+
+        self.assertEqual(bst.height(), 1)
+
+    def test_height_returns_1_for_tree_with_left_and_right_sub_tree(self):
+        bst = BinarySearchTree()
+        bst.insert(1)
+        bst.insert(0)
+        bst.insert(2)
+
+        self.assertEqual(bst.height(), 1)
+
+    def test_height_returns_2_for_tree_with_1_left_subtree_and_2_right_subtrees(self):
+        bst = BinarySearchTree()
+        bst.insert(1)
+        bst.insert(0)
+        bst.insert(2)
+        bst.insert(3)
+
+    def test_height_returns_2_for_tree_with_2_left_subtree_and_1_right_subtrees(self):
+        bst = BinarySearchTree()
+        bst.insert(1)
+        bst.insert(0)
+        bst.insert(-1)
+        bst.insert(3)
+
     def test_height_returns_max_height_of_bst(self):
         bst = BinarySearchTree()
         bst.insert(1)

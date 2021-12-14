@@ -69,7 +69,13 @@ class BinarySearchTree:
         return self.right.max()
     
     def height(self):
-        None
+        if self.left == None and self.right == None:
+            return 0
+        if self.left != None and self.right == None:
+            return self.left.height() + 1
+        if self.right != None and self.left == None:
+            return self.right.height() + 1 
+        return max(self.left.height(), self.right.height()) + 1
 
     def preOrderTraversal(self):
         None
