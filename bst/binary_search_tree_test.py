@@ -270,6 +270,35 @@ class test_height_method(unittest.TestCase):
 
         self.assertEqual(bst.height(), 2)
 
+class test_levelOrderTraversal_method(unittest.TestCase):
+    
+    def test_LOT_returns_empty_array_if_tree_is_empty(self):
+        bst = BinarySearchTree()
+        
+        result = bst.levelOrderTraversal()
+
+        self.assertEqual(result, [])
+    
+    def test_LOT_returns_value_at_root_in_tree_with_single_node(self):
+        bst = BinarySearchTree()
+        bst.insert(1)
+        
+        result = bst.levelOrderTraversal()
+
+        self.assertEqual(result, [1])
+
+    def test_LOT_returns_values_from_top_to_bottom_left_to_right(self):
+        bst = BinarySearchTree()
+        bst.insert(1)
+        bst.insert(0)
+        bst.insert(-1)
+        bst.insert(2)
+        bst.insert(3)
+
+        result = bst.levelOrderTraversal()
+
+        self.assertEqual(result, [1, 0, 2, -1, 3])
+
 @unittest.skip
 class test_to_string_method(unittest.TestCase):
 

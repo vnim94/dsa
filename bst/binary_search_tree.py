@@ -1,3 +1,5 @@
+from queue import *
+
 class BinarySearchTree:
     def __init__(self, data=None):
         self.root = data
@@ -76,6 +78,32 @@ class BinarySearchTree:
         if self.right != None and self.left == None:
             return self.right.height() + 1 
         return max(self.left.height(), self.right.height()) + 1
+
+    def levelOrderTraversal(self):
+        result = []
+        if self.root == None:
+            return result
+
+        result.append(self.root)
+        discovered = Queue()
+        
+        if self.left == None and self.right == None:
+            return result
+        if self.left != None:
+            discovered.put(self.left)
+        if self.right != None:
+            discovered.put(self.right)
+
+        while discovered.empty() == False:
+            node = discovered.get()
+            result.append(node.root)
+            
+            if node.left != None:
+                discovered.put(node.left)
+            if node.right != None:
+                discovered.put(node.right)
+
+        return result
 
     def preOrderTraversal(self):
         None
