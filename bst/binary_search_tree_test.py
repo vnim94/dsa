@@ -299,6 +299,31 @@ class test_levelOrderTraversal_method(unittest.TestCase):
 
         self.assertEqual(result, [1, 0, 2, -1, 3])
 
+class test_preOrderTraversal_method(unittest.TestCase):
+
+    def test_POT_should_returns_empty_array_if_tree_is_empty(self):
+        bst = BinarySearchTree()
+        
+        self.assertEqual(bst.preOrderTraversal(), [])
+
+    def test_POT_should_return_value_of_root_if_only_one_value_in_tree(self):
+        bst = BinarySearchTree()
+        bst.insert(1)
+
+        self.assertEqual(bst.preOrderTraversal(), [1])
+
+    def test_POT_should_return_values_in_order_of_left_root_right(self):
+        bst = BinarySearchTree()
+        bst.insert(2)
+        bst.insert(1)
+        bst.insert(3)
+
+        self.assertEqual(bst.preOrderTraversal(), [2,1,3])
+
+    def test_POT_should_return_values_in_left_root_right_for_multiple_levels(self):
+        bst = BinarySearchTree()
+        bst.insert()
+
 @unittest.skip
 class test_to_string_method(unittest.TestCase):
 

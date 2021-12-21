@@ -94,7 +94,7 @@ class BinarySearchTree:
         if self.right != None:
             discovered.put(self.right)
 
-        while discovered.empty() == False:
+        while not discovered.empty():
             node = discovered.get()
             result.append(node.root)
             
