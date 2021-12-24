@@ -105,11 +105,48 @@ class BinarySearchTree:
 
         return result
 
-    def preOrderTraversal(self):
-        None
+    def preOrderTraversal(self, result=[]):
+        
+        if self.root == None:
+            return result
+        
+        result.append(self.root)
 
-    def inOrderTraversal(self):
-        None
+        if self.left:
+            self.left.preOrderTraversal(result)
 
-    def postOrderTraversal(self):
-        None
+        if self.right:
+            self.right.preOrderTraversal(result)
+
+        return result
+                
+    def inOrderTraversal(self, result=[]):
+        
+        if self.root == None:
+            return result
+
+        if self.left:
+            self.left.inOrderTraversal(result)
+
+        result.append(self.root)
+
+        if self.right:
+            self.right.inOrderTraversal(result)
+
+        return result
+
+    def postOrderTraversal(self, result=[]):
+
+        if self.root == None:
+            return result
+
+        if self.left:
+            self.left.postOrderTraversal(result)
+        
+        if self.right:
+            self.right.postOrderTraversal(result)
+
+        result.append(self.root)
+
+        return result
+        
