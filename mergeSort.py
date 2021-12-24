@@ -1,54 +1,59 @@
 def mergeSort(array):
 
-	# if only one element, return array	
-	if len(array) == 1:
-		return array
+	length = len(array)
+	# if length = 1, return value
+	if length == 1:
+		return array[0]
 
-	# split the array
-	mid = len(array) // 2
+	# mid = length // 2
+	mid = length // 2
 
 	# sort left
-	left = mergeSort(array[:mid])
-	
+	left = array[:mid]
+	mergeSort(left)
+
 	# sort right
-	right = mergeSort(array[mid:])
-	
-	# merge and sort left and right
+	right = array[mid:]
+	mergeSort(right)
 
-	return merge(left, right)
+	# merge left and right
+	merge(left, right, array)
 
-def merge(left, right):
+	return array
 
-	# create temp array and initialise variables
-	temp = [None] * (len(left) + len(right))
+def merge(left, right, array):
+
+	leftLength = len(left)
+	rightLength = len(right)
 	i = 0
 	j = 0
-	index = 0
+	k = 0
 
-	# compare elements in left with elements in right
-	while i < len(left) and j < len(right):
+	# loop through left and right until out of bounds
+	while i < leftLength and j < rightLength:
+		# if left[i] < right[j], assign to array[k], increment i 
 		if left[i] < right[j]:
-			temp[index] = left[i]
-			i = i + 1
+			array[k] = left[i]
+			i += 1
+		# else, assign to array[k], increment j	
 		else:
-			temp[index] = right[j]
-			j = j + 1
+			array[k] = right[j]
+			j += 1
+		# increment k
+		k += 1
 
-		index = index + 1
-
-	# add remaining elements in left to temp
-	while i < len(left):
-		temp[index] = left[i]
-		i = i + 1
-
-	# add remaining elements in right to temp
-	while j < len(right):
-		temp[index] = right[j]
-		j = j + 1
-
-	return temp
-
-
-array = [6, 3, 8, 5, 2, 4, 7, 1]
+	# if leftover in left, loop through and assign to array[k], increment k
+	while i < leftLength:
+		array[k] = left[i]
+		i += 1
+		k += 1
+	
+	# if leftover in right, loop through and assign to array[k], increment k
+	while j < rightLength:
+		array[k] = right[j]
+		j += 1
+		k += 1
+	
+array = [314123415312351235,795,1,3,10,3,5]
 
 print(mergeSort(array))
