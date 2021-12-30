@@ -398,6 +398,48 @@ class test_postOrderTraversal_method(unittest.TestCase):
 
         self.assertEqual(bst.postOrderTraversal(), [0, 2, 2, 1, 4, 3, 2])
 
+class test_isValid_method(unittest.TestCase):
+
+    def test_isValid_should_return_true_if_tree_is_empty(self):
+        bst = BinarySearchTree()
+        
+        self.assertTrue(bst.isValid())
+
+    def test_isValid_should_return_true_if_root_greater_than_left(self):
+        bst = BinarySearchTree()
+        bst.insert(1)
+        bst.insert(0)
+
+        self.assertTrue(bst.isValid())
+        
+    def test_isValid_should_return_true_if_root_less_than_right(self):
+        bst = BinarySearchTree()
+        bst.insert(1)
+        bst.insert(2)
+
+        self.assertTrue(bst.isValid())
+
+    def test_isValid_should_return_true_if_root_greater_than_left_and_less_than_right(self):
+        bst = BinarySearchTree()
+        bst.insert(1)
+        bst.insert(0)
+        bst.insert(2)
+
+        self.assertTrue(bst.isValid())
+
+    def test_isValid_should_return_true_if_root_greater_than_left_and_less_than_right(self):
+        bst = BinarySearchTree()
+        bst.insert(1)
+        bst.insert(0)
+        bst.insert(-1)
+        bst.insert(1)
+        bst.insert(2)
+        bst.insert(2)
+        bst.insert(3)
+
+        self.assertTrue(bst.isValid())
+
+
 @unittest.skip
 class test_to_string_method(unittest.TestCase):
 

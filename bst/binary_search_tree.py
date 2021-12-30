@@ -149,4 +149,25 @@ class BinarySearchTree:
         result.append(self.root)
 
         return result
+
+    def isValid(self, lowerBound=None, upperBound=None):
+        if self.root == None:
+            return True
+
+        if self.left:
+            self.left.isValid(None, self.root)
+        if self.right:
+            self.right.isValid(self.root, None)
+        else:
+            if upperBound != None:
+                if self.root <= upperBound:
+                    return True
+                return False
+            if lowerBound != None:
+                if self.root > lowerBound:
+                    return True
+                return False
+
+        return True
+
         
