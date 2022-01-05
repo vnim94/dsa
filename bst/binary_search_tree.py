@@ -21,30 +21,34 @@ class BinarySearchTree:
                 self.left.insert(value)
         
     def remove(self, value):
-        if self.root == value:
-            self.root = None
-        elif value > self.root:
-            if self.right != None:
-                if self.right.root == value:
-                    if self.right.left != None:
-                        self.right = self.right.left
-                    elif self.right.right != None:
-                        self.right = self.right.right
-                    else:
-                        self.right = None
-                else:
-                    self.right.remove(value)
+        if self.root == None:
+            return
+        if value > self.root and self.right:
+            self.right = self.right.remove(value)
+            return self
+        elif value < self.root and self.left:
+            self.left = self.left.remove(value)
+            return self
         else:
-            if self.left != None:
-                if self.left.root == value:
-                    if self.left.right != None:
-                        self.left = self.left.right
-                    elif self.left.left != None:
-                        self.left = self.left.left
-                    else:
-                        self.left = None
-                else:
-                    self.left.remove(value)
+            # no children
+            if self.left == None and self.right == None:
+                return None
+            # one child
+            if self.right == None:
+                return self.left
+            if self.left == None:
+                return self.right
+            # two children - find max in left subtree, replace current node value with max value and delete node with max
+            current = self
+            node = self.left
+            while node.right != None:
+                current = node
+                node = node.right
+            self.root = node.root
+            current.right = None
+            
+            return self
+            
 
     def search(self, value):
         if self.root == value:
