@@ -1,3 +1,8 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
 class HashTable:
     def __init__(self):
         self.array = [None] * 10
@@ -15,11 +20,20 @@ class HashTable:
 
     def put(self, key, value):
         index = self.hash(key)
-        self.array[index] = value
+        node = Node([key,value])
+        if self.array[index] != None:
+            node.next = self.array[index]
+        self.array[index] = node
 
     def get(self, key):
         index = self.hash(key)
-        return self.array[index]
+        if self.array[index]:
+            node = self.array[index]
+            while node != None:
+                if node.data[0] == key:
+                    return node.data[1]
+                node = node.next
+            
 
     def remove(self, key):
         index = self.hash(key)
