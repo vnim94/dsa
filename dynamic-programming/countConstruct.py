@@ -4,23 +4,17 @@ def countConstructUsingRecursion(target, wordBank):
 	if target == '':
 		return 1
 
-	count = None
+	count = 0
 
 	# loop through strings
 	for string in wordBank:
 		# if string is a suffix, recursively call with suffix as target
 		if target.find(string) == 0:
 			suffix = target[len(string):]
-			
-			if count == None:
-				count = countConstructUsingRecursion(suffix, wordBank)
-			else:
-				count += countConstructUsingRecursion(suffix, wordBank)
+			count += countConstructUsingRecursion(suffix, wordBank)
 				
 	# if no possible combinations, return 0
-	if count:
-		return count
-	return 0
+	return count
 
 def countConstructUsingMemoization(target, wordBank, memo={}):
 
@@ -30,22 +24,15 @@ def countConstructUsingMemoization(target, wordBank, memo={}):
 	if target == '':
 		return 1
 
-	count = None
+	count = 0
 
 	for string in wordBank:
 		if target.find(string) == 0:
 			suffix = target[len(string):]
-			if count == None:
-				count = countConstructUsingMemoization(suffix, wordBank, memo)
-			else:
-				count += countConstructUsingMemoization(suffix, wordBank, memo)
+			count += countConstructUsingMemoization(suffix, wordBank, memo)
 
-	if count:
-		memo[target] = count
-		return count
-
-	memo[target] = 0
-	return 0
+	memo[target] = count
+	return count
 
 print('Recursion ---------------------------------------')
 print(countConstructUsingRecursion('abcd', ['de'])) # 0

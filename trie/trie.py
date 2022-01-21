@@ -1,16 +1,20 @@
 class Node:
     def __init__(self, data):
         self.data = data
-        self.next = None
+        self.end = False
+        self.pointers = {}
 
 class Trie:
     def __init__(self):
-        self.root = None
-        self.pointers = {}
+        self.root = Node('')
 
     def insert(self, value):
-        if self.root == None:
-            self.root = Node(value[0])
+        node = self.root
+        for char in value:
+            node.pointers[char] = Node(char)
+            node = node.pointers[char]
+
+        node.end = True
 
     def delete(self):
         None
