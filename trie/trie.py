@@ -11,7 +11,8 @@ class Trie:
     def insert(self, value):
         node = self.root
         for char in value:
-            node.pointers[char] = Node(char)
+            if char not in node.pointers:
+                node.pointers[char] = Node(char)
             node = node.pointers[char]
 
         node.end = True
