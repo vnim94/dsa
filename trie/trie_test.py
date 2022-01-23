@@ -70,6 +70,33 @@ class test_insert(unittest.TestCase):
         self.assertEqual(r.data, 'r')
         self.assertTrue(r.end)
 
+class test_delete(unittest.TestCase):
 
+    def test_delete_string_from_trie(self):
+        trie = Trie()
+        trie.insert('t')
 
+        trie.delete('t')
+
+        self.assertIsNone(trie.root.pointers.get('t'))
+
+class test_search(unittest.TestCase):
+
+    def test_search_for_string(self):
+        trie = Trie()
+        trie.insert('test')
+
+        self.assertTrue(trie.search('test'))
+
+    def test_search_for_non_existent_string(self):
+        trie = Trie()
         
+        self.assertFalse(trie.search('test'))
+
+    def test_search_for_string_with_multiple_strings_in_trie(self):
+        trie = Trie()
+        trie.insert('test')
+        trie.insert('testing')
+
+        self.assertTrue(trie.search('test'))
+        self.assertTrue(trie.search('testing'))
