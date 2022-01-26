@@ -72,11 +72,19 @@ class test_insert(unittest.TestCase):
 
 class test_delete(unittest.TestCase):
 
-    def test_delete_string_from_trie(self):
+    def test_delete_single_char_from_trie(self):
         trie = Trie()
         trie.insert('t')
 
         trie.delete('t')
+
+        self.assertIsNone(trie.root.pointers.get('t'))
+
+    def test_delete_string_from_trie(self):
+        trie = Trie()
+        trie.insert('test')
+
+        trie.delete('test')
 
         self.assertIsNone(trie.root.pointers.get('t'))
 

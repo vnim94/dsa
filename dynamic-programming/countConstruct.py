@@ -34,21 +34,29 @@ def countConstructUsingMemoization(target, wordBank, memo={}):
 	memo[target] = count
 	return count
 
-print('Recursion ---------------------------------------')
-print(countConstructUsingRecursion('abcd', ['de'])) # 0
-print(countConstructUsingRecursion('abcd', ['ab','cd'])) # 1
-print(countConstructUsingRecursion('abcdef', ['ab','abc','cd','def','abcd'])) # 1
-print(countConstructUsingRecursion('purple', ['purp', 'p', 'ur', 'le', 'purpl'])) # 2
-print(countConstructUsingRecursion('skateboard',['bo','rd','ate','t','ska','sk','boar'])) # 0
-print(countConstructUsingRecursion('enterapotentpot', ['a','p','ent','enter','ot','o','t'])) # 4
+def countConstructUsingTabulation(target, wordBank):
+    # table with default value (0)
+    table = [0 for _ in range(len(target) + 1)]
+    # seed with base case: '' -> 1  
+    table[0] = 1
+    # loop table
+    for i in range(len(target) + 1):
+        # if table[i] > 0, loop through words
+        if table[i] > 0:
+            for word in wordBank:
+            # if word matches chars starting from i, add table[i] to table[i+len(word)]
+                if word == target[i:i + len(word)]:
+                    table[i + len(word)] += table[i]
 
-print('Memoization --------------------------------------')
-print(countConstructUsingMemoization('abcd', ['de'], memo={})) # 0
-print(countConstructUsingMemoization('abcd', ['ab','cd'], memo={})) # 1
-print(countConstructUsingMemoization('abcdef', ['ab','abc','cd','def','abcd'], memo={})) # 1
-print(countConstructUsingMemoization('purple', ['purp', 'p', 'ur', 'le', 'purpl'], memo={})) # 2
-print(countConstructUsingMemoization('skateboard',['bo','rd','ate','t','ska','sk','boar'], memo={})) # 0
-print(countConstructUsingMemoization('enterapotentpot', ['a','p','ent','enter','ot','o','t'], memo={})) # 4
-print(countConstructUsingMemoization('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef', [
-	'e', 'ee', 'eee', 'eeee', 'eeeeee', 'eeeeee', 'eeeeee'
-], memo={})) # 0
+    # return table[len(target)]
+    return table[len(target)]
+     
+
+print('Recursion - Memoization - Tabulation')
+print(countConstructUsingRecursion('abcd', ['de']), ' - ', countConstructUsingMemoization('abcd', ['de'], memo={}), ' - ', countConstructUsingTabulation('abcd', ['de'])) # 0
+print(countConstructUsingRecursion('abcd', ['ab','cd']), ' - ', countConstructUsingMemoization('abcd', ['ab','cd'], memo={}), ' - ', countConstructUsingTabulation('abcd', ['ab','cd'])) # 1
+print(countConstructUsingRecursion('abcdef', ['ab','abc','cd','def','abcd']), ' - ', countConstructUsingMemoization('abcdef', ['ab','abc','cd','def','abcd'], memo={}) , ' - ', countConstructUsingTabulation('abcdef', ['ab','abc','cd','def','abcd'])) # 1
+print(countConstructUsingRecursion('purple', ['purp', 'p', 'ur', 'le', 'purpl']), ' - ', countConstructUsingMemoization('purple', ['purp', 'p', 'ur', 'le', 'purpl'], memo={}) , ' - ', countConstructUsingTabulation('purple', ['purp', 'p', 'ur', 'le', 'purpl']) ) # 2
+print(countConstructUsingRecursion('skateboard',['bo','rd','ate','t','ska','sk','boar']), ' - ', countConstructUsingMemoization('skateboard',['bo','rd','ate','t','ska','sk','boar'], memo={}) , ' - ' , countConstructUsingTabulation('skateboard',['bo','rd','ate','t','ska','sk','boar'])) # 0
+print(countConstructUsingRecursion('enterapotentpot', ['a','p','ent','enter','ot','o','t']), ' - ', countConstructUsingMemoization('enterapotentpot', ['a','p','ent','enter','ot','o','t'], memo={}) , ' - ', countConstructUsingTabulation('enterapotentpot', ['a','p','ent','enter','ot','o','t'])) # 4
+print('--------', ' - ', countConstructUsingMemoization('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef', ['e', 'ee', 'eee', 'eeee', 'eeeeee', 'eeeeee', 'eeeeee'], memo={}), ' - ', countConstructUsingTabulation('eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef', ['e', 'ee', 'eee', 'eeee', 'eeeeee', 'eeeeee', 'eeeeee'])) # 0
