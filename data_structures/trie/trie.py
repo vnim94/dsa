@@ -18,7 +18,11 @@ class Trie:
         node.end = True
 
     def delete(self, value):
-        None
+        node = self.root
+        for char in value:
+            node = node.pointers[char]
+
+        node.end = False
 
     def search(self, value):
         node = self.root
@@ -28,4 +32,6 @@ class Trie:
             else:
                 return False
 
-        return True
+        if node.end:
+            return True
+        return False

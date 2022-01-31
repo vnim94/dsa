@@ -72,13 +72,26 @@ class test_insert(unittest.TestCase):
 
 class test_delete(unittest.TestCase):
 
+    def test_delete_sets_end_as_false(self):
+        trie = Trie()
+        trie.insert('test')
+
+        t = trie.root.pointers['t']
+        e = t.pointers['e']
+        s = e.pointers['s']
+        endT = s.pointers['t']
+
+        trie.delete('test')
+
+        self.assertFalse(endT.end)
+
     def test_delete_single_char_from_trie(self):
         trie = Trie()
         trie.insert('t')
 
         trie.delete('t')
 
-        self.assertIsNone(trie.root.pointers.get('t'))
+        self.assertFalse(trie.search('t'))
 
     def test_delete_string_from_trie(self):
         trie = Trie()
@@ -86,7 +99,7 @@ class test_delete(unittest.TestCase):
 
         trie.delete('test')
 
-        self.assertIsNone(trie.root.pointers.get('t'))
+        self.assertFalse(trie.search('test'))
 
 class test_search(unittest.TestCase):
 

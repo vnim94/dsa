@@ -13,7 +13,7 @@ def allConstructUsingRecursion(target, wordBank):
             combinations = allConstructUsingRecursion(suffix, wordBank)
             for combo in combinations:
                 combo.insert(0, string)
-                totalCombinations.append(combo)
+            totalCombinations += combinations
 
     return totalCombinations
 
@@ -21,7 +21,7 @@ def allConstructUsingRecursion(target, wordBank):
 def allConstructUsingMemoization(target, wordBank, memo={}):
     if target in memo:
         return memo[target]
-
+        
     if target == '':
         return [[]]
 
@@ -68,4 +68,4 @@ def allConstructUsingTabulation(target, wordBank):
 # print(allConstructUsingRecursion('skateboard', ['bo', 'rd', 'ate', 't', 'ska', 'sk', 'boar']), ' - ', allConstructUsingMemoization('skateboard', ['bo', 'rd', 'ate', 't', 'ska', 'sk', 'boar'], memo={}) , ' - ', allConstructUsingTabulation('skateboard', ['bo', 'rd', 'ate', 't', 'ska', 'sk', 'boar'])) # []
 # print('--------', ' - ', allConstructUsingMemoization('aaaaaaz', ['a', 'aa', 'aaa', 'aaaa', 'aaaaa'], memo={}) ,' - ', allConstructUsingTabulation('aaaaaaz', ['a', 'aa', 'aaa', 'aaaa', 'aaaaa'])) # []
 
-print(allConstructUsingMemoization('purple', ['purp', 'p', 'ur', 'le', 'purpl'], memo={}))
+print(allConstructUsingMemoization('purple', ['purp', 'le', 'p', 'ur'], memo={}))
