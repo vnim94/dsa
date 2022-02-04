@@ -9,7 +9,7 @@ def hasCycle(head):
     fast = head
 
     # loop until overlap or end reached (i.e fast pointer is None)
-    while fast != None:
+    while fast != None and fast.next != None:
         # increment slow by 1
         slow = slow.next
         # increment fast by 2
@@ -28,10 +28,11 @@ linkedList.next.next = Node(3)
 linkedList.next.next.next = Node(4)
 linkedList.next.next.next.next = Node(5)
 linkedList.next.next.next.next.next = Node(6)
+linkedList.next.next.next.next.next.next = Node(7)
 print(hasCycle(linkedList)) # false
 
-linkedList.next.next.next.next.next = linkedList.next.next
+linkedList.next.next.next.next.next.next = linkedList.next.next
 print(hasCycle(linkedList)) # true
 
-linkedList.next.next.next.next.next = linkedList.next.next.next
+linkedList.next.next.next.next.next.next = linkedList.next.next.next
 print(hasCycle(linkedList)) # true

@@ -3,7 +3,7 @@ class Node:
         self.data = data
         self.next = None
 
-def cycleLength(head):
+def findLength(head):
     # initialise pointers
     slow = head
     fast = head
@@ -16,20 +16,19 @@ def cycleLength(head):
         fast = fast.next.next
         # if slow = fast, return start
         if slow == fast:
-            print(slow.data)
-            return calculateCycleLength(slow)
+            return calculateLength(slow)
 
     # return 0 if no cycle
     return 0
 
-def calculateCycleLength(slow):
+def calculateLength(slow):
     node = slow
     length = 0
 
     while True:
         node = node.next
         length += 1
-
+        
         if node == slow:
             break
 
@@ -41,10 +40,10 @@ linkedList.next.next = Node(3)
 linkedList.next.next.next = Node(4)
 linkedList.next.next.next.next = Node(5)
 linkedList.next.next.next.next.next = Node(6)
-print(cycleLength(linkedList)) # 0
+# print(findLength(linkedList)) # 0
 
-linkedList.next.next.next.next.next = linkedList.next.next
-print(cycleLength(linkedList)) # 3
+linkedList.next.next.next.next.next.next = linkedList.next.next
+print(findLength(linkedList)) # 4
 
-linkedList.next.next.next.next.next = linkedList.next.next.next
-print(cycleLength(linkedList)) # 2
+linkedList.next.next.next.next.next.next = linkedList.next.next.next
+print(findLength(linkedList)) # 3
