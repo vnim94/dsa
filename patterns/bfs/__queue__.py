@@ -7,6 +7,7 @@ class Queue:
     def __init__(self):
         self.front = None
         self.back = None
+        self.length = 0
 
     def push(self, *value):
         for v in value:
@@ -18,11 +19,14 @@ class Queue:
                 self.back.next = node
                 self.back = node
 
+            self.length += 1
+
     def pop(self):
         node = self.front
         if self.back == self.front:
             self.back = self.front.next
         self.front = self.front.next
+        self.length -= 1
         return node.data
 
     def isEmpty(self):

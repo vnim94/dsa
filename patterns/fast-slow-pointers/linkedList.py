@@ -3,7 +3,7 @@ class Node:
         self.data = data
         self.next = None
 
-class SinglyLinkedList:
+class LinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
@@ -14,6 +14,16 @@ class SinglyLinkedList:
                 self.head = Node(v)
                 self.tail = self.head
             else:
-                newNode = Node(v)
-                self.tail.next = newNode
-                self.tail = newNode
+                node = Node(v)
+                self.tail.next = node
+                self.tail = node
+
+    def toString(self):
+        node = self.head
+        string = ''
+        while node != None:
+            string += str(node.data)
+            string += ' '
+            node = node.next
+
+        return string
