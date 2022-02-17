@@ -59,13 +59,11 @@ def allConstructUsingTabulation(target, wordBank):
     # return table[len(target)]
     return table[len(target)]
 
-# print('Recursion - Memoization - Tabulation')
-# print(allConstructUsingRecursion('hello', ['cat', 'dog', 'mouse']), ' - ', allConstructUsingMemoization('hello', ['cat', 'dog', 'mouse'], memo={}), ' - ', allConstructUsingTabulation('hello', ['cat', 'dog', 'mouse'])) # []
-# print(allConstructUsingRecursion('', ['cat', 'dog', 'mouse']), ' - ', allConstructUsingMemoization('', ['cat', 'dog', 'mouse'], memo={}), ' - ', allConstructUsingTabulation('', ['cat', 'dog', 'mouse'])) # [[]]
-# print(allConstructUsingRecursion('purple', ['pur','ple']), ' - ', allConstructUsingMemoization('purple', ['pur','ple'], memo={}) , ' - ', allConstructUsingTabulation('purple', ['pur','ple'])) # [['pur','ple']]
-# print(allConstructUsingRecursion('purple', ['purp', 'p', 'ur', 'le', 'purpl']), ' - ', allConstructUsingMemoization('purple', ['purp', 'p', 'ur', 'le', 'purpl'], memo={}), ' - ', allConstructUsingTabulation('purple', ['purp', 'p', 'ur', 'le', 'purpl'])) # [['purp', 'le], ['p', 'ur', 'p', 'le]]
-# print(allConstructUsingRecursion('abcdef', ['ab', 'abc', 'cd', 'def', 'abcd', 'ef', 'c']), ' - ', allConstructUsingMemoization('abcdef', ['ab', 'abc', 'cd', 'def', 'abcd', 'ef', 'c'], memo={}), ' - ', allConstructUsingTabulation('abcdef', ['ab', 'abc', 'cd', 'def', 'abcd', 'ef', 'c']) ) # [['ab','cd','ef'], ['abc', 'def'], ['abcd', 'ef'], ['ab', 'c', 'def']]
-# print(allConstructUsingRecursion('skateboard', ['bo', 'rd', 'ate', 't', 'ska', 'sk', 'boar']), ' - ', allConstructUsingMemoization('skateboard', ['bo', 'rd', 'ate', 't', 'ska', 'sk', 'boar'], memo={}) , ' - ', allConstructUsingTabulation('skateboard', ['bo', 'rd', 'ate', 't', 'ska', 'sk', 'boar'])) # []
-# print('--------', ' - ', allConstructUsingMemoization('aaaaaaz', ['a', 'aa', 'aaa', 'aaaa', 'aaaaa'], memo={}) ,' - ', allConstructUsingTabulation('aaaaaaz', ['a', 'aa', 'aaa', 'aaaa', 'aaaaa'])) # []
-
-print(allConstructUsingMemoization('purple', ['purp', 'p', 'ur', 'le', 'purpl']))
+print('Recursion - Memoization - Tabulation')
+print(allConstructUsingRecursion('hello', ['cat', 'dog', 'mouse']), ' - ', allConstructUsingMemoization('hello', ['cat', 'dog', 'mouse'], memo={}), ' - ', allConstructUsingTabulation('hello', ['cat', 'dog', 'mouse'])) # []
+print(allConstructUsingRecursion('', ['cat', 'dog', 'mouse']), ' - ', allConstructUsingMemoization('', ['cat', 'dog', 'mouse'], memo={}), ' - ', allConstructUsingTabulation('', ['cat', 'dog', 'mouse'])) # [[]]
+print(allConstructUsingRecursion('purple', ['pur','ple']), ' - ', allConstructUsingMemoization('purple', ['pur','ple'], memo={}) , ' - ', allConstructUsingTabulation('purple', ['pur','ple'])) # [['pur','ple']]
+print(allConstructUsingRecursion('purple', ['purp', 'p', 'ur', 'le', 'purpl']), ' - ', allConstructUsingMemoization('purple', ['purp', 'p', 'ur', 'le', 'purpl'], memo={}), ' - ', allConstructUsingTabulation('purple', ['purp', 'p', 'ur', 'le', 'purpl'])) # [['purp', 'le], ['p', 'ur', 'p', 'le]]
+print(allConstructUsingRecursion('abcdef', ['ab', 'abc', 'cd', 'def', 'abcd', 'ef', 'c']), ' - ', allConstructUsingMemoization('abcdef', ['ab', 'abc', 'cd', 'def', 'abcd', 'ef', 'c'], memo={}), ' - ', allConstructUsingTabulation('abcdef', ['ab', 'abc', 'cd', 'def', 'abcd', 'ef', 'c']) ) # [['ab','cd','ef'], ['abc', 'def'], ['abcd', 'ef'], ['ab', 'c', 'def']]
+print(allConstructUsingRecursion('skateboard', ['bo', 'rd', 'ate', 't', 'ska', 'sk', 'boar']), ' - ', allConstructUsingMemoization('skateboard', ['bo', 'rd', 'ate', 't', 'ska', 'sk', 'boar'], memo={}) , ' - ', allConstructUsingTabulation('skateboard', ['bo', 'rd', 'ate', 't', 'ska', 'sk', 'boar'])) # []
+print('--------', ' - ', allConstructUsingMemoization('aaaaaaz', ['a', 'aa', 'aaa', 'aaaa', 'aaaaa'], memo={}) ,' - ', allConstructUsingTabulation('aaaaaaz', ['a', 'aa', 'aaa', 'aaaa', 'aaaaa'])) # []
