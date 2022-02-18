@@ -11,7 +11,7 @@ class Heap:
         else:
             parent = (index - 1) // 2
         
-        while self.nodes[index] < self.nodes[parent]:
+        while self.nodes[index] > self.nodes[parent]:
 
             temp = self.nodes[parent]
             self.nodes[parent] = self.nodes[index]
@@ -32,26 +32,26 @@ class Heap:
             left = root * 2 + 1
             right = root * 2 + 2
 
-            # if left and right child exist, swap smallest with root
+            # if left and right child exist, swap largest with root
             if left < last and right < last:
                 if self.nodes[left] < self.nodes[right]:
-                    smallest = left
+                    largest = right
                 else:
-                    smallest = right
+                    largest = left
 
-                if self.nodes[root] > self.nodes[smallest]:
+                if self.nodes[root] < self.nodes[largest]:
                     temp = self.nodes[root]
-                    self.nodes[root] = self.nodes[smallest]
-                    self.nodes[smallest] = temp
-                    root = smallest
-            # if only left child and smaller than root, swap with root
-            elif left < last and not right < last and self.nodes[root] > self.nodes[left]:
+                    self.nodes[root] = self.nodes[largest]
+                    self.nodes[largest] = temp
+                    root = largest
+            # if only left child and larger than root, swap with root
+            elif left < last and not right < last and self.nodes[root] < self.nodes[left]:
                 temp = self.nodes[root]
                 self.nodes[root] = self.nodes[left]
                 self.nodes[left] = temp
                 root = left
-            # if only right child and smaller than root, swap with root
-            elif not left < last and right < last and self.nodes[root] > self.nodes[right]:
+            # if only right child and larger than root, swap with root
+            elif not left < last and right < last and self.nodes[root] < self.nodes[right]:
                 temp = self.nodes[root]
                 self.nodes[root] = self.nodes[right]
                 self.nodes[right] = temp
