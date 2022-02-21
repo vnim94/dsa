@@ -27,15 +27,30 @@ print(findPermutationsRecursively([1])) # [[1]]
 print(findPermutationsRecursively([0, 1])) # [[0,1],[1,0]]
 print(findPermutationsRecursively([1, 2, 3])) # [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 
+# TODO
 def findPermutationsIteratively(array):
-    None
-    # results array
+    result = []
+    perms = [[]]
 
-    # loop values
+    for i in range(len(array)):
+        current = array[i]
 
-        # 
+        length = len(perms)
 
+        for _ in range(length):
+            oldPerm = perms.pop(0)
 
+            for k in range(len(oldPerm) + 1):
+                newPerm = oldPerm.copy()
+                newPerm.insert(k, current)
+
+                if len(newPerm) == len(array):
+                    result.append(newPerm)
+                else:
+                    perms.append(newPerm)
+
+    return result
+    
 print(findPermutationsIteratively([1])) # [[1]]
 print(findPermutationsIteratively([0, 1])) # [[0,1],[1,0]]
 print(findPermutationsIteratively([1, 2, 3])) # [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
