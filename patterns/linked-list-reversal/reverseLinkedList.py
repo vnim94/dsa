@@ -16,12 +16,20 @@ def reverse(head):
         # set current = next
         current = next
     
-    head = prev
+    return prev
 
-    return head
+# TODO
+def reverseRecursively(head):
+    None
+
+# list = LinkedList()
+# list.insert(2, 4, 6, 8, 10)
+# list.head = reverse(list.head)
+
+# print(list.toString())
 
 list = LinkedList()
-list.insert(2, 4, 6, 8, 10)
-list.head = reverse(list.head)
+# list.insert(2, 4)
+list.head = reverseRecursively(list.head)
 
 print(list.toString())

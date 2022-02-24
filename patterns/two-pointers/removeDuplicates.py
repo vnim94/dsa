@@ -1,6 +1,6 @@
 def removeDuplicates(array):
 
-    # initialise index pointers, one to iterate (pointerA) and one to track non-duplicates and shift numbers (pointerB)
+    # initialise index pointers, one to iterate (pointerA) and one to track non-duplicates and swap numbers (pointerB)
     pointerA = 1
     pointerB = 1
 

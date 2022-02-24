@@ -10,7 +10,7 @@ def findSmallestMissingPositive(array):
         # else, skip       
         else:
             i += 1
-
+    
     # loop array
     for i in range(len(array)):
         # first index + 1 where value not in correct position is the smallest missing positive
@@ -21,3 +21,4 @@ def findSmallestMissingPositive(array):
 print(findSmallestMissingPositive([-3, 1, 5, 4, 2])) # 3
 print(findSmallestMissingPositive([3, -2, 0, 1, 2])) # 4
 print(findSmallestMissingPositive([3, 2, 5, 1])) # 4
+print(findSmallestMissingPositive([2,-1,-1,-1,-1])) # 2
