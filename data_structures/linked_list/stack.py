@@ -13,7 +13,9 @@ class Stack:
         self.top = newNode
 
     def pop(self):
+        top = self.top
         self.top = self.top.next
+        return top.data
 
     def peek(self):
         return self.top.data

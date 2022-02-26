@@ -1,6 +1,3 @@
-import queue
-
-
 class Node:
     def __init__(self, data):
         self.data = data
@@ -8,14 +5,15 @@ class Node:
 
 class Queue:
     def __init__(self):
-        self.head = Node(None)
+        self.head = None
         self.tail = None
+        self.length = 0
 
     # add to back of queue
     def add(self, value):
         # if empty, add to head
-        if self.head.data == None:
-            self.head.data = value
+        if self.head == None:
+            self.head = Node(value)
         # else, add to tail
         else:
             if self.head.next == None:
@@ -24,13 +22,16 @@ class Queue:
             else:
                 self.tail.next = Node(value)
                 self.tail = self.tail.next
+        self.length += 1
 
     # remove from front of queue
     def remove(self):
         if self.head.next != None:
             self.head = self.head.next  
         else:
-            self.head = Node(None)
+            self.head = None
+
+        self.length -= 1
 
     # return front of queue
     def peek(self):
@@ -41,18 +42,14 @@ class Queue:
         head = self.head.data
         
         if self.head.next == None:
-            self.head = Node(None)
+            self.head = None
         else:
             self.head = self.head.next
+
+        self.length -= 1
 
         return head
 
     def size(self):
-        node = self.head
-        i = 1
-        while node.next != None:
-            node = node.next
-            i += 1
-
-        return i
+        return self.length
 

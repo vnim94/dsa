@@ -29,21 +29,57 @@ class TestGraph(unittest.TestCase):
     def test_depth_traverse_empty_graph(self):
         graph = Graph()
 
-        self.assertEqual(graph.traverseDepth(), [])
+        self.assertEqual(graph.dfs('a'), [])
 
     def test_depth_traversal(self):
         graph = Graph()
         graph.insert('a','b','c','d','e','f')
-        graph.link('a','b')
         graph.link('a','c')
-        graph.link('b','d')
+        graph.link('a','b')
         graph.link('c','e')
+        graph.link('b','d')
         graph.link('d','f')
-        graph.link('e','b')
         
-        dfs = graph.traverseDepth()
+        dfs = graph.dfs('a')
 
-        self.assertEqual(dfs, ['a','b','d','c','e','f'])
+        self.assertEqual(dfs, ['a','b','d','f','c','e'])
+
+    def test_breadth_traversal(self):
+        graph = Graph()
+        graph.insert('a','b','c','d','e','f')
+        graph.link('a','c')
+        graph.link('a','b')
+        graph.link('c','e')
+        graph.link('b','d')
+        graph.link('d','f')
+
+        bfs = graph.bfs('a')
+
+        self.assertEqual(bfs, ['a','c','b','e','d','f'])
+
+    def test_hasPath_returns_true_if_path_exists(self):
+        graph = Graph()
+        graph.insert('f','g','h','i','j','k')
+        graph.link('f','g')
+        graph.link('f','i')
+        graph.link('g','h')
+        graph.link('i','g')
+        graph.link('i','k')
+        graph.link('j','i')
+
+        self.assertTrue(graph.hasPath('j','h'))
+
+    def test_hasPath_returns_false_if_path_does_not_exist(self):
+        graph = Graph()
+        graph.insert('f','g','h','i','j','k')
+        graph.link('f','g')
+        graph.link('f','i')
+        graph.link('g','h')
+        graph.link('i','g')
+        graph.link('i','k')
+        graph.link('j','i')
+
+        self.assertFalse(graph.hasPath('k','h'))
 
     def test_toString_returns_object(self):
         graph = Graph()
@@ -53,7 +89,7 @@ class TestGraph(unittest.TestCase):
 
         output = {
             'A': ['B'],
-            'B': ['A']
+            'B': []
         }
 
         self.assertEqual(graph.toString(), output)
