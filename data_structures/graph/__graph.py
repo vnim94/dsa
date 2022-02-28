@@ -142,5 +142,18 @@ class UndirectedGraph:
             
         return False
 
+    def countLinkedNodes(self):
+        count = 0
+        visited = {}
+        for node in self.nodes:
+            if node not in visited:
+                nodes = self.bfs(node)
+                for n in nodes:
+                    visited[n] = 1
+                
+                count += 1
+
+        return count
+
     def toString(self):
         return self.nodes
