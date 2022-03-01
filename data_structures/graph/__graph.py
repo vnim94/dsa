@@ -145,12 +145,19 @@ class UndirectedGraph:
     def countLinkedNodes(self):
         count = 0
         visited = {}
+        
         for node in self.nodes:
             if node not in visited:
-                nodes = self.bfs(node)
-                for n in nodes:
-                    visited[n] = 1
+                nodes = Queue()
+                nodes.add(node)
                 
+                while not nodes.isEmpty():
+                    n = nodes.poll()
+                    for link in self.nodes[n]:
+                        if link not in visited:
+                            visited[link] = 1
+                            nodes.add(link)
+
                 count += 1
 
         return count
