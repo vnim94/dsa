@@ -1,4 +1,4 @@
-from linkedList import LinkedList
+from data_structures.linkedList import LinkedList
 
 def reverse(head, start, end):
     

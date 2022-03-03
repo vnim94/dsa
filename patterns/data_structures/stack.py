@@ -21,6 +21,9 @@ class Stack:
         self.top = node.next
         return node.data
 
+    def isEmpty(self):
+        return self.top == None
+
     def toString(self):
         node = self.top
         string = ''

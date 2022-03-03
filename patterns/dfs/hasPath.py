@@ -1,4 +1,5 @@
 from binaryTree import Node
+from stack import Stack
 
 def hasPath(root, s):
     

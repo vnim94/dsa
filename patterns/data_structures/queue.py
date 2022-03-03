@@ -30,9 +30,7 @@ class Queue:
         return node.data
 
     def isEmpty(self):
-        if self.front == None:
-            return True
-        return False
+        return self.front == None
 
     def toString(self):
         current = self.front

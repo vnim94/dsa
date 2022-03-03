@@ -17,10 +17,10 @@ def findAllMissing(array):
     for i in range(len(array)):
         if array[i] - 1 != i:
             missing.append(i + 1)
-
+    print(array)
     # return array
     return missing
 
-print(findAllMissing([2, 3, 1, 8, 2, 3, 5, 1])) #[4, 6, 7], The array should have all numbers from 1 to 8, due to duplicates 4, 6, and 7 are missing.
+print(findAllMissing([2, 3, 1, 8, 2, 3, 5, 1])) # [4, 6, 7], The array should have all numbers from 1 to 8, due to duplicates 4, 6, and 7 are missing.
 print(findAllMissing([2, 4, 1, 2])) # 3
 print(findAllMissing([2, 3, 2, 1])) # 4

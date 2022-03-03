@@ -1,5 +1,5 @@
-from binaryTree import Node
-from __queue__ import Queue
+from data_structures.queue import Queue
+from data_structures.binaryTree import Node
 
 def levelAverages(root):
     

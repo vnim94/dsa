@@ -1,5 +1,5 @@
-from __queue__ import Queue
-from binaryTree import BSTNode
+from data_structures.queue import Queue
+from data_structures.binaryTree import BSTNode
 
 def traverse(root):
     result = []
