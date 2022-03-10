@@ -1,4 +1,4 @@
-from binaryTree import Node
+from data_structures.binaryTree import Node
 
 def allPaths(root):
     
@@ -25,6 +25,24 @@ def allPaths(root):
     # return paths
     return paths
 
+# TODO:
+def allPaths(root):
+    nodes = [root]
+
+    result = []
+
+    while len(nodes) > 0:
+        node = nodes.pop(len(nodes) - 1)
+        result.append(node.data)
+
+        if node.left != None:
+            nodes.append(node.left)
+
+        if node.right != None:
+            nodes.append(node.right)
+
+    return result
+
 tree = Node(5)
 tree.left = Node(4)
 tree.left.left = Node(11)
@@ -36,5 +54,8 @@ tree.right.right = Node(4)
 tree.right.right.left = Node(5)
 tree.right.right.right= Node(1)
 
-print(allPaths(tree)) # [[5, 4, 11, 7], [5, 4, 11, 2], [5, 8, 13], [5, 8, 4, 5], [5, 8, 4, 1]]   
+print(allPaths(tree)) 
+
+# ["5->4->11->7", "5->4->11->2", "5->8->13", "5->8->4->5", "5->8->4->1"]
+# [[5, 4, 11, 7], [5, 4, 11, 2], [5, 8, 13], [5, 8, 4, 5], [5, 8, 4, 1]]   
 

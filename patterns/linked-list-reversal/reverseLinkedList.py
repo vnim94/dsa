@@ -18,18 +18,25 @@ def reverse(head):
     
     return prev
 
-# TODO
-def reverseRecursively(head):
-    None
-
-# list = LinkedList()
-# list.insert(2, 4, 6, 8, 10)
-# list.head = reverse(list.head)
-
-# print(list.toString())
+def reverseRecursively(head, prev = None):
+    # base case: if head is None, return prev
+    if head == None:
+        return prev
+    # set next
+    next = head.next
+    # reverse pointers
+    head.next = prev
+    # return recurse using next as head, and head as prev
+    return reverseRecursively(next, head)
 
 list = LinkedList()
-# list.insert(2, 4)
+list.insert(2, 4, 6, 8, 10)
+list.head = reverse(list.head)
+
+print(list.toString())
+
+list = LinkedList()
+list.insert(2, 4, 6, 8, 10)
 list.head = reverseRecursively(list.head)
 
 print(list.toString())

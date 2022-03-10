@@ -30,6 +30,22 @@ def traverse(root):
     # return result
     return result
 
+def traverseRecursively(root):
+    # base case: root empty -> return []
+    if root == None:
+        return []
+    # base case: leaf root -> return [[root]]
+    if root.left == None and root.right == None:
+        return [[root.data]]
+
+    result = []
+
+    # recurse left and right child
+    if root.left == None:
+        result += traverseRecursively(root.left)
+
+    # return result
+
 tree = Node(3)
 tree.left = Node(9)
 tree.left.left = Node(4)

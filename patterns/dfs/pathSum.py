@@ -1,4 +1,4 @@
-from binaryTree import Node
+from data_structures.binaryTree import Node
 
 def pathSum(root, target):
     
@@ -12,18 +12,16 @@ def pathSum(root, target):
     # check left and right child with target - root.data
     if root.left != None:
         result = pathSum(root.left, target - root.data)
-        # if result not empty, add root.data to front
-        if len(result) > 0:
-            for path in result:
-                path.insert(0, root.data)
-            paths += result
+        # add root.data to front
+        for path in result:
+            path.insert(0, root.data)
+        paths += result
         
     if root.right != None:
         result = pathSum(root.right, target - root.data)
-        if len(result) > 0:
-            for path in result:
-                path.insert(0, root.data)
-            paths += result
+        for path in result:
+            path.insert(0, root.data)
+        paths += result
 
     return paths
 

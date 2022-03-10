@@ -33,19 +33,19 @@ def _findDuplicate(array):
 def findDuplicate(array):
 
     # initialise pointers. treat values in the array as pointers
-    slow = array[0]
-    fast = array[slow] # ?
+    slow = array[0] 
+    fast = array[slow]
     
     # find where slow meets fast
     while slow != fast:
-        slow = array[slow]
-        fast = array[array[fast]] # ?
+        slow = array[slow] # slow.next
+        fast = array[array[fast]] # fast.next.next
 
     # find start of cycle
     slow = 0
     while slow != fast:
-        slow = array[slow]
-        fast = array[fast]
+        slow = array[slow] # slow.next
+        fast = array[fast] # fast.next
 
     # return slow
     return slow

@@ -1,5 +1,4 @@
-from binaryTree import Node
-from stack import Stack
+from data_structures.binaryTree import Node
 
 def hasPath(root, s):
     
@@ -15,15 +14,34 @@ def hasPath(root, s):
 
     return False
 
+def hasPathIteratively(root, s):
+    # if root.data = s, return true
+    if root.data == s:
+        return True
+
+    nodes = [root]
+    # iterate until stack is empty
+    while len(nodes) > 0:
+        # pop node off stack
+        node = nodes.pop(len(nodes) - 1)
+        # add children to stack
+        if node.left != None:
+            nodes.append(node.left)
+        if node.right != None:
+            nodes.append(node.right)
+
+    # return false
+    return False
+
 tree = Node()
 
-print(hasPath(tree, 0)) # false
+print(hasPath(tree, 0), '-', hasPathIteratively(tree, 0)) # false
 
 tree = Node(1)
 tree.left = Node(2)
 tree.right = Node(3)
 
-print(hasPath(tree, 5)) # false
+print(hasPath(tree, 5), '-', hasPathIteratively(tree, 5)) # false
 
 tree = Node(5)
 tree.left = Node(4)
@@ -35,4 +53,4 @@ tree.right.left = Node(13)
 tree.right.right = Node(4)
 tree.right.right.right = Node(1)
 
-print(hasPath(tree, 22)) # true
+print(hasPath(tree, 22), '-', hasPathIteratively(tree, 22)) # true
