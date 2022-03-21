@@ -7,7 +7,7 @@ def merge(intervals):
         A = intervals[i - 1]
         B = intervals[i]
         # if overlap (endA > startB), merge
-        if A[1] > B[0]:
+        if A[1] >= B[0]:
             # merge: [startA, max(endA, endB)]
             intervals[i] = [A[0], max(A[1], B[1])]
             # remove first interval

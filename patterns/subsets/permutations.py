@@ -27,7 +27,6 @@ print(findPermutationsRecursively([1])) # [[1]]
 print(findPermutationsRecursively([0, 1])) # [[0,1],[1,0]]
 print(findPermutationsRecursively([1, 2, 3])) # [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
 
-# TODO
 def findPermutationsIteratively(array):
     result = []
     perms = [[]]

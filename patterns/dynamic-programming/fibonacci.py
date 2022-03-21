@@ -11,7 +11,7 @@ def fibUsingMemoization(n, memo={}):
     if n <= 2:
         return 1
 
-    memo[n] = fibUsingMemoization(n-1) + fibUsingMemoization(n-2)
+    memo[n] = fibUsingMemoization(n-1, memo) + fibUsingMemoization(n-2, memo)
     return memo[n]
 
 def fibUsingTabulation(n):
@@ -36,7 +36,7 @@ def fib(n):
 
     return num
 
-print('Recursion: ', fibUsingRecursion(5))
-print('Memoization: ', fibUsingMemoization(8))
-print('Tabulation: ', fibUsingTabulation(8))
+print('Recursion: ', fibUsingRecursion(8)) 
+print('Memoization: ', fibUsingMemoization(8))  
+print('Tabulation: ', fibUsingTabulation(8)) 
 print('Constant: ', fib(8))
