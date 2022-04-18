@@ -1,8 +1,8 @@
 def singleNumber(array):
     
     # XOR numbers in the array
-    a = array[0]
-    for i in range(1, len(array)):
+    a = 0
+    for i in range(len(array)):
         a ^= array[i]
 
     # return value

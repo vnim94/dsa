@@ -2,17 +2,12 @@ def findMissingNumber(array):
     i = 0
     # loop until correct value in correct position
     while i < len(array):
-        # if value == max value, skip
-        if array[i] == len(array):
-            i += 1
+        if array[i] < len(array) and array[i] != i:
+            temp = array[i]
+            array[i] = array[temp]
+            array[temp] = temp
         else:
-            # value != index, swap with value at index, else skip
-            if array[i] != i:
-                temp = array[i]
-                array[i] = array[temp]
-                array[temp] = temp
-            else:
-                i += 1
+            i += 1
             
     # loop 
     for i in range(len(array)):

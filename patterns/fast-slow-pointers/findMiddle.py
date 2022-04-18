@@ -1,4 +1,4 @@
-from linkedList import SinglyLinkedList
+from data_structures.linkedList import SinglyLinkedList
 
 def findMiddle(head):
     

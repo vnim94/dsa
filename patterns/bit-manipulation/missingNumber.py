@@ -1,14 +1,15 @@
 def findMissingNumber(array):
-    n = len(array) + 1
-    # XOR numbers in the array 
-    a = array[0]
-    for i in range(1, n - 1):
+    length = len(array)
+    # XOR array
+    a = 0
+    for i in range(length):
         a ^= array[i]
-    # XOR numbers in range
-    b = 1
-    for i in range(2, n + 1):
+    # XOR range
+    b = 0
+    for i in range(1, length + 2): # including n
         b ^= i
-    # return XOR of both results
+
+    # return XOR of both
     return a ^ b
 
 print(findMissingNumber([1,5,2,6,4])) # 3
