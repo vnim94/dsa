@@ -1,26 +1,3 @@
-def rotateRight(array, n):
-    # edge case: length = 0 -> return array
-    length = len(array)
-    if length == 0:
-        return array
-    
-    output = [0] * length
-
-    # reduce n to lowest common multiple
-    n = n % length
-    index = 0
-    # iterate array starting from length - n onwards
-    for i in range(length - n, length):
-        output[index] = array[i]
-        index += 1
-
-    # iterate array until length - n (exclusive)
-    for i in range(length - n):
-        output[index] = array[i]
-        index += 1
-
-    return output
-
 def rotateRightInPlace(array,n):
     length = len(array)
     # reverse array
@@ -41,32 +18,36 @@ def reverse(array, start, end):
         start += 1
         end -= 1
     
-def rotateLeft(array, n):
-    length = len(array)
-    # if empty, return array
-    if length == 0:
-        return array
-    # create output 
+def rotate(A, k):
+    length = len(A)
     output = [0] * length
-    # resolve n
-    n = n % length
-    index = 0
-    # iterate from n onwards
-    for i in range(n, length):
-        output[index] = array[i]
-        index += 1
-    # iterate up to n
-    for i in range(n):
-        output[index] = array[i]
-        index += 1
+
+    # iterate A
+    for i in range(length):
+        # calculate final position
+        index = (i + k) % length
+        # assign to output
+        output[index] = A[i]
 
     # return output
     return output
 
+def rotateLeft(A, k):
+    length = len(A)
+    output = [0] * length
+    
+    for i in range(length):
+        index = i - (k % length)
+        if index < 0:
+            index += length
 
-print(rotateRight([], 1), rotateLeft([], 1)) # []
-print(rotateRight([1], 3), rotateLeft([1], 3)) # [1]
-print(rotateRight([1,2], 3), rotateLeft([1,2], 3)) # [1]
-print(rotateRight([0, 0, 0], 1), rotateLeft([0, 0, 0], 1)) # [0, 0, 0]
-print(rotateRight([1, 2, 3, 4], 4), rotateLeft([1, 2, 3, 4], 4)) # [1, 2, 3, 4]
-print(rotateRight([3, 8, 9, 7, 6], 3), rotateLeft([3, 8, 9, 7, 6], 3)) # [9, 7, 6, 3, 8] [7, 6, 3, 8, 9]
+        output[index] = A[i]
+
+    return output
+
+print(rotate([], 1), rotateLeft([], 1)) # []
+print(rotate([1], 3), rotateLeft([1], 3)) # [1]
+print(rotate([1,2], 3), rotateLeft([1,2], 3)) # [1]
+print(rotate([0, 0, 0], 1), rotateLeft([0, 0, 0], 1)) # [0, 0, 0]
+print(rotate([1, 2, 3, 4], 4), rotateLeft([1, 2, 3, 4], 4)) # [1, 2, 3, 4]
+print(rotate([3, 8, 9, 7, 6], 3), rotateLeft([3, 8, 9, 7, 6], 3)) # [9, 7, 6, 3, 8] [7, 6, 3, 8, 9]
