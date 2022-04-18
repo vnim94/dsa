@@ -1,4 +1,3 @@
-from re import L
 from linked_list.stack import Stack
 from linked_list.queue import Queue
 
@@ -142,11 +141,15 @@ class UndirectedGraph:
             
         return False
 
-    def countLinkedNodes(self):
+    def shortestPath(self, src, dst):
+        None
+
+    def countComponents(self):
         count = 0
         visited = {}
         
         for node in self.nodes:
+            # if node not visited yet, explore it's neighbours
             if node not in visited:
                 nodes = Queue()
                 nodes.add(node)
@@ -162,5 +165,29 @@ class UndirectedGraph:
 
         return count
 
+    def largestComponent(self):
+        largest = 0
+        visited = {}
+        
+        for node in self.nodes:
+            count = 0
+
+            if node not in visited:
+                nodes = Queue()
+                nodes.add(node)
+
+                while not nodes.isEmpty():
+                    n = nodes.poll()
+                    for link in self.nodes[n]:
+                        if link not in visited:
+                            visited[link] = 1
+                            nodes.add(link)
+                            count += 1
+
+                if largest == None or count > largest:
+                    largest = count
+        
+        return largest
+                
     def toString(self):
         return self.nodes

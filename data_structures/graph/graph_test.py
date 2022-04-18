@@ -175,7 +175,7 @@ class Test_UndirectedGraph(unittest.TestCase):
         self.assertTrue(graph.hasPath('i','l'))
         self.assertFalse(graph.hasPath('i','n'))
 
-    def test_countLinks_returns_number_of_links(self):
+    def test_countComponents_returns_number_of_links(self):
         graph = UndirectedGraph()
         graph.insert(1,2,3,4,5,6,7,8)
         graph.link(1,2)
@@ -184,9 +184,22 @@ class Test_UndirectedGraph(unittest.TestCase):
         graph.link(7,6)
         graph.link(8,6)
 
-        linkedNodes = graph.countLinkedNodes()
+        linkedNodes = graph.countComponents()
 
         self.assertEqual(linkedNodes, 3)        
+    
+    def test_largestComponent_returns_number_of_nodes_in_largest_sized_component(self):
+        graph = UndirectedGraph()
+        graph.insert(1,2,3,4,5,6,7,8)
+        graph.link(1,2)
+        graph.link(4,6)
+        graph.link(5,6)
+        graph.link(7,6)
+        graph.link(8,6)
+        
+        largest = graph.largestComponent()
+
+        self.assertEqual(largest, 5)
 
     def test_toString_returns_object(self):
         graph = UndirectedGraph()

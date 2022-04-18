@@ -15,7 +15,7 @@ def countingSort(array):
 	# shift values in count array to right
 	for i in range(len(count) - 1,0,-1):
 		count[i] = count[i-1]
-	
+	print(count)
 	count[0] = 0
 	# create output array
 	output = [0] * len(array)
