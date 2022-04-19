@@ -1,35 +1,22 @@
 def maxDiff(A):
-    maxValue = None
+    min = None
     maxDiff = None
-    for i in range(len(A) - 1, -1, -1):
-        if maxValue == None or A[i] > maxValue:
-            maxValue = A[i]
-        if A[i] < maxValue:
-            diff = maxValue - A[i]
+    # iterate A
+    for value in A:
+        # record min
+        if min == None or value < min:
+            min = value
+        # if value > min, calculate diff
+        if value > min:
+            diff = value - min
+            # check against maxDiff
             if maxDiff == None or diff > maxDiff:
                 maxDiff = diff
 
+    # return maxDiff, else -1 if no maxDiff
     if maxDiff == None:
         return -1
     return maxDiff
-    
-def maxDiff(A):
-    minimum = None
-    maxDiff = None
-
-    for i in range(len(A)):
-        if minimum == None or A[i] < minimum:
-            minimum = A[i]
-
-        if A[i] > minimum:
-            diff = A[i] - minimum
-            if maxDiff == None or diff > maxDiff:
-                maxDiff = diff
-
-    if maxDiff == None:
-        return -1
-    return maxDiff
-
 
 print(maxDiff([7,1,5,4])) # 4
 print(maxDiff([9,4,3,2])) # -1

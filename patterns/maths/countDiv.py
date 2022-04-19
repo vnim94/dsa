@@ -10,12 +10,12 @@
 #     # return count
 #     return count
 
-def count(a, b, k):
-    if a % k == 0:
+def count(start, end, k):
+    if start % k == 0:
         # range floor k + 1
-        return (b - a) // k + 1
+        return (end - start) // k + 1
     # max - (min - midMod) floor k
-    return (b - (a - a % k)) // k
+    return (end - (start - start % k)) // k
 
 
 print(count(6, 11, 2)) # 3

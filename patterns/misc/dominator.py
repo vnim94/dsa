@@ -3,7 +3,7 @@ def dominator(A):
     stack = 0
     # iterate length of A
     for i in range(length):
-        # if stack = 0, increment stack of stack and set top as A[i]
+        # if stack = 0, increment stack and set top as A[i]
         if stack == 0:
             stack += 1
             top = i
