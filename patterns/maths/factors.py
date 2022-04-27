@@ -3,10 +3,13 @@ def countFactors(N):
     i = 1
     # iterate up to N, check squares
     while i * i < N:
+        # if divisible, is a factor 
         if N % i == 0:
+            # increment count to include value and its square
             count += 2
         i += 1
 
+    # include perfect square
     if i * i == N:
         count += 1
     

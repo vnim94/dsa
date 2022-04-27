@@ -1,33 +1,8 @@
 def absDistinct(A):
-    back = 0
-    front = len(A) - 1
-    count = 0
-    current = None
-    former = None
-    # iterate while back < front
-    while back < front:
-        # if front >= back, current = |A[front]| decrement front,
-        if abs(A[back]) <= abs(A[front]):
-            current = abs(A[front])
-            front -= 1
-        # else, current = |A[back]|, increment back
-        else:
-            current = abs(A[back])
-            back -= 1
-        # if current != former, add to distinct count
-        print(current, former)
-        if current != former:
-            count += 1
-        # set former to current
-        former = current
-
-    # return count
-    return count
-
-def absDistinctInPlace(A):
     count = len(A)
     start = 0
     end = count - 1
+    
     # iterate using two pointers (start & end)
     while start < end:    
         # skip equal adjacent values
@@ -58,3 +33,4 @@ def absDistinctInPlace(A):
     return count
 
 print(absDistinct([-5,-3,-1,0,3,6])) # 5
+print(absDistinct([1,1]))

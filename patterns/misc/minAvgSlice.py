@@ -21,3 +21,5 @@ def minAvgSlice(A):
     return start
 
 print(minAvgSlice([4,2,2,5,1,5,8])) # 1
+print(minAvgSlice([1,9,3,5,4,7,2])) # 2
+print(minAvgSlice([10, 10, -1, 2, 4, -1, 2, -1])) # 5

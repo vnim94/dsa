@@ -1,14 +1,14 @@
 # brute force
-# def count(a, b, k):
-#     count = 0
-#     # iterate from a to b
-#     for i in range(a, b + 1):
-#         # if i % k = 0, increment count
-#         if i % k == 0:
-#             count += 1
+def count(a, b, k):
+    count = 0
+    # iterate from a to b
+    for i in range(a, b + 1):
+        # if i % k = 0, increment count
+        if i % k == 0:
+            count += 1
 
-#     # return count
-#     return count
+    # return count
+    return count
 
 def count(start, end, k):
     if start % k == 0:
