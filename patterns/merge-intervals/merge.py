@@ -4,12 +4,12 @@ def merge(intervals):
     i = 1
     # iterate intervals
     while i < len(intervals):
-        A = intervals[i - 1]
-        B = intervals[i]
-        # if overlap (endA > startB), merge
-        if A[1] >= B[0]:
-            # merge: [startA, max(endA, endB)]
-            intervals[i] = [A[0], max(A[1], B[1])]
+        current = intervals[i - 1]
+        prev = intervals[i]
+        # if overlap (prevEnd > currentStart), merge
+        if current[1] >= prev[0]:
+            # merge: [currentStart, max(currentEnd, prevEnd)]
+            intervals[i] = [current[0], max(current[1], prev[1])]
             # remove first interval
             del intervals[i - 1]
         else:
