@@ -13,3 +13,5 @@ def maxSubarray(A):
 print(maxSubarray([-2,1,-3,4,-1,2,1,-5,4])) # 6
 print(maxSubarray([1])) # 1
 print(maxSubarray([5,4,-1,7,8])) # 23
+print(maxSubarray([3,2,-6,4,0])) # [3,2] -> 5
+print(maxSubarray([5,-7,3,5,-2,4,-1])) # [3,5,-2,4] -> 10

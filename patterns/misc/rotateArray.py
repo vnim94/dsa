@@ -25,7 +25,9 @@ def rotate(A, k):
     # iterate A
     for i in range(length):
         # calculate final position
-        index = (i + k) % length
+        index = i + (k % length)
+        if index > length - 1:
+            index -= length
         # assign to output
         output[index] = A[i]
 

@@ -1,9 +1,9 @@
 def triangle(A):
     # sort
     A.sort()
-    # iterate and return true if conditions satisfied
+    # iterate and return true if X + Y > Z satisfied (other conditions will satisfied as sorted)
     for i in range(len(A) - 2):
-        if A[i] + A[i+1] > A[i+2] and A[i] + A[i+2] > A[i+1] and A[i+1] + A[i+2] > A[i]:
+        if A[i] + A[i+1] > A[i+2]: 
             return True
     # return false
     return False

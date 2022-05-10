@@ -16,6 +16,7 @@ def brackets(string):
             # if not matching, return 0
             if string[i] != brackets[bracket]:
                 return False
+        # closing bracket and stack empty (no opening brackets)
         else:
             return False
         

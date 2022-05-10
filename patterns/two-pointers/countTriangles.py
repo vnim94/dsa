@@ -14,11 +14,11 @@ def countTriangles(A):
             while Z < length and A[X] + A[Y] > A[Z]:
                 Z += 1
             # add number of triangles between Z and Y
-            diff = Z - Y - 1
+            diff = (Z - 1) - Y
             count += diff
 
     # return count
     return count
 
 print(countTriangles([10,2,5,1,8,12])) # 4 [1,2,5,8,10,12] -> (5,8,10), (5,8,12), (5,10,12), (8,10,12)
-print(countTriangles([3,3,5,6])) # 3 -> (3,3,5) (3,3,6) (3,5,6)
+# print(countTriangles([3,3,5,6])) # 3 -> (3,3,5) (3,3,6) (3,5,6)

@@ -1,7 +1,6 @@
 from data_structures.binaryTree import Node
 
 def hasPath(root, s):
-    
     # exit condition: if node is a leaf node & value = s, return True. 
     if root.left == None and root.right == None and root.data == s:
         return True
@@ -14,21 +13,31 @@ def hasPath(root, s):
 
     return False
 
-def hasPathIteratively(root, s):
+def hasPathIteratively(root, target):
+    if root.data == None:
+        return False
     # if root.data = s, return true
-    if root.data == s:
+    if root.data == target:
         return True
 
     nodes = [root]
+    sum = 0
     # iterate until stack is empty
     while len(nodes) > 0:
-        # pop node off stack
-        node = nodes.pop(len(nodes) - 1)
-        # add children to stack
+        # pop top, set as prev and add to sum
+        node = nodes.pop()
+        sum += node.data
+        # if leaf node -> if sum = target, return true, else minus from sum
+        if node.left == None and node.right == None:
+            if sum == target:
+                return True
+            sum -= node.data
+        # add right child
+        if node.right != None:
+            nodes.append(node.right) 
+        # add left child
         if node.left != None:
             nodes.append(node.left)
-        if node.right != None:
-            nodes.append(node.right)
 
     # return false
     return False

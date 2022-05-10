@@ -9,7 +9,7 @@ def stoneWall(A):
             prev = A[i]
             count += 1
             stack.append(A[i])
-        # if decreasing, empty stack. if stack empty or current != top, increment count, add to stack 
+        # if decreasing, empty stack. if stack empty or current != top, requires a new block -> increment count, add to stack 
         elif A[i] < prev:
             while len(stack) > 0 and A[i] < stack[-1]:
                 stack.pop()

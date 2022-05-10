@@ -6,7 +6,7 @@ def findMissingNumber(array):
         a ^= array[i]
     # XOR range
     b = 0
-    for i in range(1, length + 2): # including n
+    for i in range(1, length + 2): # including n (1 to n + 1)
         b ^= i
 
     # return XOR of both
