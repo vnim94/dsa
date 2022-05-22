@@ -1,6 +1,3 @@
-from xml import dom
-
-
 def equiLeader(A):
     length = len(A)
     stack = 0
@@ -14,9 +11,10 @@ def equiLeader(A):
         else: 
             stack += 1
 
-    if stack > 0:
+    if stack == 0:
         return 0
     dominator = A[top]
+    
     # count dominator
     count = 0
     for i in range(length):
