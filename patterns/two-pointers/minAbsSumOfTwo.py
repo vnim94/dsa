@@ -31,8 +31,12 @@ def minAbsSumOfTwo(A):
         # take min of currentMin vs abs(A[start] + A[end])
         if minAbsSum == None or abs(sum) < minAbsSum:
             minAbsSum = abs(sum)
-        # if A[start] + A[end] < 0, need larger number to get to 0, increment start
-        if sum <= 0:
+        # if sum = 0, increment start and decrement end
+        if sum == 0:
+            start += 1
+            end -=1
+        # if sum < 0, need larger number, increment start
+        elif sum < 0:
             start += 1
         # else, need smaller number to get to 0, decrement end
         else:
